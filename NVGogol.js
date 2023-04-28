@@ -36,3 +36,16 @@ const text = `Городничий. Я пригласил вас, господа
 Городничий. Да, таков уже неизъяснимый закон судеб: умный человек — или пьяница, или рожу такую состроит, что хоть святых выноси.
 Лука Лукич. Не приведи Бог служить по ученой части! Всего боишься: всякий мешается, всякому хочется показать, что он тоже умный человек.
 Городничий. Это бы еще ничего, — инкогнито проклятое! Вдруг заглянет: «А, вы здесь, голубчики! А кто, скажет, здесь судья?» — «Ляпкин-Тяпкин». — «А подать сюда Ляпкина-Тяпкина! А кто попечитель богоугодных заведений?» — «Земляника». — «А подать сюда Землянику!» Вот что худо!`
+const phrases = text.split('\n')
+let result = ''
+charecters.forEach(person => {
+  let personPattern = `\n${person}:\n`
+  phrases.forEach((phrase, index) => {
+    if (phrase.includes(person) && phrase.indexOf(person) < person.length - 1) {
+      const stringWithoutCharecter = phrase.slice(person.length + 1)
+      personPattern += `${index + 1}) ${stringWithoutCharecter}\n`
+    }
+  })
+  result += personPattern
+})
+console.log(result)
